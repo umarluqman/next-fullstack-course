@@ -1,17 +1,15 @@
 import { FunctionComponent, ReactNode } from "react";
 import Link from "next/link";
-// import { useAuth } from "src/auth/useAuth";
+import { useAuth } from "src/auth/useAuth";
 
 interface iProps {
   main: ReactNode;
 }
 
 const Layout: FunctionComponent<iProps> = ({ main }) => {
-  const authenticated = true;
+  const { logout, authenticated } = useAuth();
 
-  const logout = () => {
-    return null;
-  };
+  console.log({ authenticated });
 
   return (
     <div className="bg-gray-900 max-w-screen-2xl mx-auto text-white">
@@ -34,7 +32,7 @@ const Layout: FunctionComponent<iProps> = ({ main }) => {
               <button onClick={logout}>Logout</button>
             </>
           ) : (
-            <Link href="/home/add">
+            <Link href="/auth">
               <a>Log in / Sign up</a>
             </Link>
           )}
