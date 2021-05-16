@@ -26,7 +26,7 @@ const Layout: FunctionComponent<iProps> = ({ main }) => {
           </Link>
           {authenticated ? (
             <>
-              <Link href="/home/add">
+              <Link href="/houses/add">
                 <a>Add House</a>
               </Link>
               <button onClick={logout}>Logout</button>
