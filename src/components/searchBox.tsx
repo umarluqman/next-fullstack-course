@@ -63,7 +63,6 @@ const ReadySearchBox = ({ onSelectAddress, defaultValue }: ISearchBoxProps) => {
   };
 
   const handleSelect = async (address: string) => {
-    console.log({ address, status, data });
     setValue(address, false);
     clearSuggestions();
 
