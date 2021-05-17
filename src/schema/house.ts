@@ -30,6 +30,15 @@ class CoordinateInput {
 }
 
 @InputType()
+class BoundsInput {
+  @Field((_type) => CoordinateInput)
+  sw!: CoordinateInput;
+
+  @Field((_type) => CoordinateInput)
+  ne!: CoordinateInput;
+}
+
+@InputType()
 class HouseInput {
   @Field((_type) => String)
   address!: string;
@@ -99,6 +108,17 @@ export class HouseResolver {
   @Query((_returns) => House, { nullable: true })
   async house(@Arg("id") id: string, @Ctx() ctx: Context) {
     return ctx.prisma.house.findOne({ where: { id: parseInt(id) } });
+  }
+
+  @Query((_returns) => [House], { nullable: false })
+  async houses(@Arg("bounds") bounds: BoundsInput, @Ctx() ctx: Context) {
+    return ctx.prisma.house.findMany({
+      where: {
+        latitude: { gte: bounds.sw.latitude, lte: bounds.ne.latitude },
+        longitude: { gte: bounds.sw.longitude, lte: bounds.ne.longitude },
+      },
+      take: 50,
+    });
   }
 
   @Authorized()
