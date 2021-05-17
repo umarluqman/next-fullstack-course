@@ -19,6 +19,7 @@ export default function Home() {
           >
             HouseList
           </div>
+
           <div className="w-1/2">
             <Map />
           </div>
