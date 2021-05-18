@@ -15,7 +15,7 @@ const Layout: FunctionComponent<iProps> = ({ main }) => {
     <div className="bg-gray-900 max-w-screen-2xl mx-auto text-white">
       <nav className="bg-gray-800" style={{ height: 64 }}>
         <div className="px-6 flex items-center justify-between h-16">
-          <Link href="/home">
+          <Link href="/">
             <a>
               <img
                 src="/home-color.svg"
