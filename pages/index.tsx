@@ -28,12 +28,12 @@ const parseBounds = (boundsString: string) => {
 
   return {
     sw: {
-      latitude: bounds[0][1],
-      longitude: bounds[0][0],
+      latitude: bounds?.[0]?.[1],
+      longitude: bounds?.[0]?.[0],
     },
     ne: {
-      latitude: bounds[1][1],
-      longitude: bounds[1][0],
+      latitude: bounds?.[1]?.[1],
+      longitude: bounds?.[1]?.[0],
     },
   };
 };
